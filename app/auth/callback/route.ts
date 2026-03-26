@@ -1,0 +1,22 @@
+// app/auth/callback/route.ts
+import { NextResponse } from "next/server";
+import { getSupabaseServer } from "@/lib/supabaseServer";
+
+export async function GET(request: Request) {
+  const { searchParams, origin } = new URL(request.url);
+  const code = searchParams.get("code");
+
+  if (code) {
+    const supabase = await getSupabaseServer(); // await the function
+    await supabase.auth.exchangeCodeForSession(code);
+  }
+
+  return NextResponse.redirect(`${origin}/`);
+}
+
+
+
+
+
+
+
