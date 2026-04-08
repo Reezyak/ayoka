@@ -12,7 +12,8 @@ export default function LoginPage() {
       email,
       options: { emailRedirectTo: `${location.origin}/auth/callback` },
     });
-    setMessage(error?.message ?? "Check your email for the magic link ✨");
+    setMessage(error?.message ?? "Are you ready for the next stage ? ✨");
+    setMessage(error?.message ?? "Check your email for work ")
   };
 
   return (
